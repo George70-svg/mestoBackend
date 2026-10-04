@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { createUser, getAllUsers, getCurrentUser, updateUserAvatar, updateUserInfo } from '../controllers/users'
+import { createUserValidate, updateUserAvatarValidate, updateUserInfoValidate } from '../middlewares/usersRouterValidate'
 
 const usersRouter = Router()
 
@@ -9,10 +10,10 @@ const usersRouter = Router()
 // PATCH /users/me — обновляет профиль
 // PATCH /users/me/avatar — обновляет аватар
 
-usersRouter.post('/', createUser)
+usersRouter.post('/', createUserValidate, createUser)
 usersRouter.get('/', getAllUsers)
 usersRouter.get('/:userId', getCurrentUser)
-usersRouter.patch('/me', updateUserInfo)
-usersRouter.patch('/me/avatar', updateUserAvatar)
+usersRouter.patch('/me', updateUserInfoValidate, updateUserInfo)
+usersRouter.patch('/me/avatar', updateUserAvatarValidate, updateUserAvatar)
 
 export default usersRouter

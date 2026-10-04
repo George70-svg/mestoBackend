@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx watch src/app.ts",
     "start": "pnpm exec tsx src/app.ts",
-    "build": "tsc",
+    "build": "tsc --build",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "tscheck": "tsc --noEmit"
@@ -24,23 +24,19 @@
   "packageManager": "pnpm@12.6.0",
   "type": "module",
   "devDependencies": {
-    "@types/bcrypt": "6.0.0",
     "@types/express": "5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "26.6.2",
-    "@typescript-eslint/eslint-plugin": "8.70.0",
-    "@typescript-eslint/parser": "8.70.0",
+    "@typescript-eslint/parser": "8.71.0",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.32.0",
     "tsx": "4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "6.0.3"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
+    "celebrate": "16.0.0",
     "express": "5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongodb": "^7.6.0",
+    "mongodb": "7.6.0",
     "mongoose": "9.10.1"
   }
 }

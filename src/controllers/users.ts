@@ -35,10 +35,6 @@ export const createUser = async (request: Request, response: Response, next: Nex
   try {
     const { name, about, avatar } = request.body
 
-    if (!name || !about || !avatar) {
-      throw new BadRequestError('Invalid card data')
-    }
-
     const user = await User.create({
       name,
       about,
@@ -54,10 +50,6 @@ export const createUser = async (request: Request, response: Response, next: Nex
 export const updateUserInfo = async (request: FakeAuthRequest, response: Response, next: NextFunction) => {
   try {
     const { name, about } = request.body
-
-    if (!name || !about) {
-      throw new BadRequestError('Invalid user data')
-    }
 
     const owner = request.user?._id
 
@@ -80,10 +72,6 @@ export const updateUserInfo = async (request: FakeAuthRequest, response: Respons
 export const updateUserAvatar = async (request: FakeAuthRequest, response: Response, next: NextFunction) => {
   try {
     const { avatar } = request.body
-
-    if (!avatar) {
-      throw new BadRequestError('Invalid user avatar')
-    }
 
     const owner = request.user?._id
 

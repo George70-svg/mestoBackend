@@ -11,9 +11,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "settings": {
     "import/resolver": {
       "node": {
@@ -45,5 +42,5 @@
         "ts": "never"
       }
     ]
-  },
+  }
 }

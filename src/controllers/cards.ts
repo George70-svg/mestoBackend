@@ -19,8 +19,8 @@ export const createCard = async (request: FakeAuthRequest, response: Response, n
     const { name, link } = request.body
     const owner = request.user?._id
 
-    if (!name || !link) {
-      throw new BadRequestError('Invalid card data')
+    if (!owner) {
+      throw new NotFoundError('User not found')
     }
 
     const card = await Card.create({
@@ -55,10 +55,6 @@ export const likeCard = async (request: FakeAuthRequest<{ cardId: string }>, res
   try {
     const { cardId } = request.params
 
-    if (!cardId) {
-      throw new NotFoundError('Invalid cardId')
-    }
-
     const owner = request.user?._id
 
     if (!owner) {
@@ -80,10 +76,6 @@ export const likeCard = async (request: FakeAuthRequest<{ cardId: string }>, res
 export const dislikeCard = async (request: FakeAuthRequest<{ cardId: string }>, response: Response, next: NextFunction) => {
   try {
     const { cardId } = request.params
-
-    if (!cardId) {
-      throw new NotFoundError('Invalid cardId')
-    }
 
     const owner = request.user?._id
 

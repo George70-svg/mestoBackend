@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { createCard, deleteCard, dislikeCard, getAllCards, likeCard } from '../controllers/cards'
+import { createCardValidate, likeCardValidate } from '../middlewares/cardsRouterValidate'
 
 const cardsRouter = Router()
 
@@ -10,9 +11,9 @@ const cardsRouter = Router()
 // DELETE /cards/:cardId/likes — убрать лайк с карточки
 
 cardsRouter.get('/', getAllCards)
-cardsRouter.post('/', createCard)
+cardsRouter.post('/', createCardValidate, createCard)
 cardsRouter.delete('/:cardId', deleteCard)
-cardsRouter.put('/:cardId/likes', likeCard)
-cardsRouter.delete('/:cardId/likes', dislikeCard)
+cardsRouter.put('/:cardId/likes', likeCardValidate, likeCard)
+cardsRouter.delete('/:cardId/likes', likeCardValidate, dislikeCard)
 
 export default cardsRouter
